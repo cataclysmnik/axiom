@@ -76,4 +76,28 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".slider");
+    const track = document.querySelector(".slider-track");
+
+    console.log("Slider Width:", slider.offsetWidth);
+    console.log("Track Width:", track.scrollWidth);
+
+    // Function to scroll infinitely
+    function scrollSlider() {
+        const scrollPosition = track.scrollLeft;
+        const scrollWidth = track.scrollWidth;
+
+        console.log("Current Scroll Position: ", scrollPosition);
+
+        if (scrollPosition >= scrollWidth - slider.offsetWidth) {
+            track.scrollLeft = 0;
+        } else {
+            track.scrollLeft += 1;
+        }
+    }
+
+    // Start the infinite scroll loop
+    setInterval(scrollSlider, 16); // 16ms for smooth scrolling at ~60fps
+});
 

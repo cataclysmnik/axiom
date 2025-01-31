@@ -12,6 +12,7 @@ padding: 0;
 box-sizing: border-box;
 scroll-snap-type: y mandatory;
 scroll-behavior: smooth;
+overscroll-behavior: none;
 /* scroll-padding-top: 6rem; */
 }
 
@@ -164,3 +165,85 @@ border-top: 1px solid rgba(0,0,0,0.3);
     background-clip: text;
     color: transparent;
   }
+
+#explore {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+}  
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 60vmin;
+    padding-top: 3rem;
+    overflow-x: auto; /* This is necessary for scrolling */
+    scroll-snap-type: x mandatory;
+}
+
+.slider-track {
+    display: flex;
+    gap: 0.5rem;
+    height: 100%;
+    width: max-content; /* Ensure this expands as content grows */
+}
+
+.card {
+    width: 20vw; /* Adjust this to fit your design */
+    min-width: 100px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    scroll-snap-align: start;
+}
+
+/* Hide scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
+.slider::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+.slider {
+    scrollbar-width: none; /* For Firefox */
+}
+
+
+/* Specific images for each card */
+.slider-track .card:nth-child(1) {
+    background-image: url('https://picsum.photos/id/846/1000/600');
+}
+
+.slider-track .card:nth-child(2) {
+    background-image: url('https://picsum.photos/id/861/1000/600');
+}
+
+.slider-track .card:nth-child(3) {
+    background-image: url('https://picsum.photos/id/182/1000/600');
+}
+
+.slider-track .card:nth-child(4) {
+    background-image: url('https://picsum.photos/id/892/1000/600');
+}
+
+.slider-track .card:nth-child(5) {
+    background-image: url('https://picsum.photos/id/95/1000/600');
+}
+
+.slider-track .card:nth-child(6) {
+    background-image: url('https://picsum.photos/id/888/1000/600');
+}
+
+.slider-track .card:nth-child(7) {
+    background-image: url('https://picsum.photos/id/1033/1000/600');
+}
+
+.slider-track .card:nth-child(8) {
+    background-image: url('https://picsum.photos/id/1054/1000/600');
+}
+
+.slider-track .card:nth-child(9) {
+    background-image: url('https://picsum.photos/id/1081/1000/600');
+}
+
+
