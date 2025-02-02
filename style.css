@@ -225,39 +225,43 @@ height: 100svh;
 
 /* Specific images for each card */
 .slider-track .card:nth-child(1) {
-    background-image: url('https://i.imgur.com/VO47yVv.png');
+    background-image: url('https://i.imgur.com/KCtyJuN.jpg');
 }
 
 .slider-track .card:nth-child(2) {
-    background-image: url('https://i.imgur.com/9SKHLBt.jpg');
+    background-image: url('https://i.imgur.com/JwRMu3U.png');
 }
 
 .slider-track .card:nth-child(3) {
-    background-image: url('https://i.imgur.com/oJnzspY.jpg');
+    background-image: url('https://i.imgur.com/zVL0q6n.jpg');
 }
 
 .slider-track .card:nth-child(4) {
-    background-image: url('https://i.imgur.com/7lvRs9e.jpg');
+    background-image: url('https://i.imgur.com/Lsol02r.png');
 }
 
 .slider-track .card:nth-child(5) {
-    background-image: url('https://i.imgur.com/vTmx8jH.jpg');
+    background-image: url('https://i.imgur.com/zZAbJ12.png');
 }
 
 .slider-track .card:nth-child(6) {
-    background-image: url('https://i.imgur.com/GjrzxJl.jpg');
+    background-image: url('https://i.imgur.com/ZXfqJPx.png');
 }
 
 .slider-track .card:nth-child(7) {
-    background-image: url('https://i.imgur.com/ZteRKN6.jpg');
+    background-image: url('https://i.imgur.com/XywCoHt.png');
 }
 
 .slider-track .card:nth-child(8) {
-    background-image: url('https://i.imgur.com/BlHT7zi.jpg');
+    background-image: url('https://i.imgur.com/0vzeidm.png');
 }
 
 .slider-track .card:nth-child(9) {
-    background-image: url('https://i.imgur.com/BlHT7zi.jpg');
+    background-image: url('https://i.imgur.com/5Vf0Vd3.png');
+}
+
+.slider-track .card:nth-child(10) {
+    background-image: url('https://i.imgur.com/tOc6CGK.png');
 }
 
 #skills {
