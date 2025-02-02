@@ -4,6 +4,7 @@
 --main: rgba(255,255,255,0.8);
 --login: rgba(255,255,255,0.8);
 --primary: rgb(35, 33, 38);
+--card-color: rgb(23, 23, 23);
 }
 
 * {
@@ -304,10 +305,9 @@ height: 100svh;
     }
 
     .card {
-        min-width: 300px;
+        min-width: 250px;
         height: 100%;
         background-size: cover;
-        background-position: center;
         scroll-snap-align: start;
     }
 }

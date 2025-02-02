@@ -177,7 +177,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
     observer.observe(exploreSection);
 });
-
-
-
-
