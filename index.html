@@ -9,15 +9,6 @@
 </head>
 <body>
     <main>
-        <nav class='nav-top'>
-            <div class='logo'>⏶</div>
-            <ul class='nav-top-left'>
-                <li><a href='#hero'>Home</a></li>
-                <li><a href='#'>My Work</a></li>
-                <li><a href='#'>Socials</a></li>
-            </ul>
-        </nav>
-
         <ul class='nav-bottom'>
             <li><a href='#hero'>Introduction</a></li> <!-- Now correctly linked -->
             <li><a href='#explore'>Explore</a></li>
@@ -29,7 +20,9 @@
             <section id="hero" class="hero">
                 <div class="hero-content">
                     <h1>Welcome to Axiom</h1>
-                    <p>I am a graphics designer specializing in stunning posters of cars, foods, and more.</p>
+                    <p>I am a graphics designer specializing in creating posters of cars, foods, and more.</p>
+                    <!-- <p>I create 3D art using specialised software.</p>
+                    <p>I also create minimalistic websites.</p> -->
                 </div>
             </section>
 
@@ -39,26 +32,56 @@
                     <p>Discover my design work.</p>
                 </div>
                 <div class="slider">
-                    <div class="slider-track">
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
-                    </div>
+                    
+                        <div class="slider-track">
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                        </div>
                 </div>
+                <div class="explore-hint">
+                    <p>Scroll or swipe to see the posters.</p>
+                </div>
+                
             </section>
 
             <section id="skills" class="hero">
                 <div class="hero-content">
                     <h1>Skills</h1>
-                    <p>Graphic Design | 3D Art | Web Development</p>
+                    <div id="skill-category">
+                        <div id="graphics" class="skill-category">
+                            <h2>Graphics Design</h2>
+                            <ul>
+                                <li>Adobe Photoshop</li>
+                                <li>Figma</li>
+                                <li>Canva</li>
+                            </ul>
+                        </div>
+                        <div id="cg" class="skill-category">
+                            <h2>3D Art</h2>
+                            <ul>
+                                <li>Blender</li>
+                                <li>Unreal Engine</li>
+                            </ul>
+                        </div>
+                        <div id="web" class="skill-category">
+                            <h2>Web Development</h2>
+                            <ul>
+                                <li>HTML | CSS | JS</li>
+                                <li>Next.js</li>
+                                <li>Tailwind CSS</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
+            
 
             <section id="about" class="hero">
                 <div class="hero-content">

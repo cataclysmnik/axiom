@@ -80,15 +80,12 @@ top: 0;
 display: flex;
 align-items: center;
 gap: 1rem;
-margin-left: 2rem;
+padding-top: 1rem;
+margin-left: 3rem;
 background-color: var(--primary);
 
 a {
     transition: all 0.3s ease-in-out;
-}
-
-& li:first-of-type a {
-    padding-bottom: 0.75rem;
 }
 
 & li:hover a {
@@ -97,15 +94,21 @@ a {
 }
 }
 
+
+
 .nav-bottom a.active,
 .nav-bottom a:hover {
     box-shadow: inset 0 -2px 0 var(--active);
 }
 
+.nav-bottom {
+    z-index: 1000;
+}
+
 .hero {
 height: 100vh;
 height: 100svh;
-border-top: 1px solid rgba(0,0,0,0.3);
+
 }
 
 .border { border-top: none; }
@@ -128,6 +131,10 @@ border-top: 1px solid rgba(0,0,0,0.3);
     color: var(--inactive);
 }
 
+.explore-hint > p {
+    font: 100 1rem helvetica,sans-serif;
+    color: #656565;
+}
 
 
 @property --＠color-1 {
@@ -175,22 +182,28 @@ border-top: 1px solid rgba(0,0,0,0.3);
 
 .slider {
     position: relative;
-    width: 100%;
     height: 60vmin;
-    padding-top: 3rem;
-    overflow-x: auto; /* This is necessary for scrolling */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    overflow-x: hidden; /* Hide the scrollbar but allow manual scroll */
+    white-space: nowrap;
     scroll-snap-type: x mandatory;
+    cursor: grab;
+}
+
+.slider:active {
+    cursor: grabbing;
 }
 
 .slider-track {
     display: flex;
     gap: 0.5rem;
     height: 100%;
-    width: max-content; /* Ensure this expands as content grows */
+    width: max-content; /* Prevent shrinking */
 }
 
 .card {
-    width: 20vw; /* Adjust this to fit your design */
+    width: 20vw;
     min-width: 100px;
     height: 100%;
     background-size: cover;
@@ -246,4 +259,138 @@ border-top: 1px solid rgba(0,0,0,0.3);
     background-image: url('https://i.imgur.com/BlHT7zi.jpg');
 }
 
+#skills {
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+}
 
+/* Keep navbar visible at all times on mobile */
+@media (max-width: 768px) {
+    .nav-top {
+        position: fixed;  /* Fix the navbar at the top */
+        top: 0;
+        left: 0;
+        width: 100%;  /* Ensure it spans the entire width */
+        z-index: 1000;  /* Make sure it stays on top of other content */
+        background-color: var(--primary);  /* Ensure background color is set */
+    }
+
+    /* Optional: Add padding to the top of the body to prevent overlap */
+    body {
+        padding-top: 3rem;  /* Adjust this to the height of your navbar */
+    }
+
+    .nav-bottom {
+        display: flex;
+        margin: 0px;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        background-color: var(--primary);
+        z-index: 1000;
+        padding: .5rem;
+        padding-top: 2rem;
+    }
+
+    .slider {
+        position: relative;
+        height: 50vh;
+        padding-top: 1.5rem;
+        overflow-x: hidden; /* Hide the scrollbar but allow manual scroll */
+        white-space: nowrap;
+        scroll-snap-type: x mandatory;
+        cursor: grab;
+    }
+
+    .card {
+        min-width: 300px;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        scroll-snap-align: start;
+    }
+}
+
+/* Style for Skills Section */
+#skills {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 2rem;
+    background-color: #1a1a1a;
+    color: var(--main);
+    flex-direction: column;
+}
+
+.hero-content {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+h1 {
+    font: 900 3rem helvetica, sans-serif;
+    color: var(--active);
+    margin-bottom: 2rem;
+}
+
+#skill-category {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Individual Skill Category */
+.skill-category {
+    background-color: #333;
+    border-radius: 8px;
+    padding: 1.5rem;
+    flex: 1;
+    min-width: 250px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.skill-category:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.skill-category h2 {
+    font: 700 1.5rem helvetica, sans-serif;
+    margin-bottom: 1rem;
+    color: var(--active);
+}
+
+.skill-category ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-category ul li {
+    font: 100 1.1rem helvetica, sans-serif;
+    color: var(--inactive);
+    margin: 0.5rem 0;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    #skills {
+        padding: 3rem 1rem;
+    }
+
+    #skill-category {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .skill-category {
+        min-width: 100%;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}

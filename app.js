@@ -1,19 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const navTop = document.querySelector('.nav-top');
-  const navBottom = document.querySelector('.nav-bottom');
-  const hero = document.querySelector('.hero');
-
-  function sticky() {
-    const { top } = navBottom.getBoundingClientRect();
-    let xPos = -navTop.offsetHeight;
-    xPos += top;
-    navBottom.style.transform = `translateX(${-xPos}px)`;
-    hero.classList.toggle('border', xPos !== 0);
-  }
-
-  window.addEventListener('scroll', sticky);
-});
-
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".sections section");
     const container = document.querySelector(".sections");
@@ -76,28 +60,124 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     const slider = document.querySelector(".slider");
-    const track = document.querySelector(".slider-track");
 
-    console.log("Slider Width:", slider.offsetWidth);
-    console.log("Track Width:", track.scrollWidth);
+    // Mouse wheel scrolling
+    slider.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        slider.scrollBy({
+            left: event.deltaY * 2, // Adjust scroll speed
+            behavior: "smooth"
+        });
+        resetAutoScroll();
+    });
 
-    // Function to scroll infinitely
-    function scrollSlider() {
-        const scrollPosition = track.scrollLeft;
-        const scrollWidth = track.scrollWidth;
+    // Dragging functionality
+    let isDragging = false;
+    let startX, scrollLeft;
 
-        console.log("Current Scroll Position: ", scrollPosition);
+    // Mouse dragging
+    slider.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        slider.classList.add("dragging");
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        resetAutoScroll();
+    });
 
-        if (scrollPosition >= scrollWidth - slider.offsetWidth) {
-            track.scrollLeft = 0;
-        } else {
-            track.scrollLeft += 1;
-        }
+    slider.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Adjust drag speed
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    ["mouseup", "mouseleave"].forEach((event) => {
+        slider.addEventListener(event, () => {
+            isDragging = false;
+            slider.classList.remove("dragging");
+        });
+    });
+
+    // Touch dragging
+    let touchStartX, touchScrollLeft;
+
+    slider.addEventListener("touchstart", (e) => {
+        isDragging = true;
+        slider.classList.add("dragging");
+        touchStartX = e.touches[0].pageX - slider.offsetLeft;
+        touchScrollLeft = slider.scrollLeft;
+        resetAutoScroll();
+    });
+
+    slider.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const touchX = e.touches[0].pageX - slider.offsetLeft;
+        const walk = (touchX - touchStartX) * 2; // Adjust drag speed
+        slider.scrollLeft = touchScrollLeft - walk;
+    });
+
+    slider.addEventListener("touchend", () => {
+        isDragging = false;
+        slider.classList.remove("dragging");
+    });
+
+    // Auto-scroll setup
+    let scrollDirection = 1;
+    let autoScrollInterval;
+    const scrollSpeed = .1;
+    const edgeBuffer = 10; // Small buffer to prevent stuttering at edges
+
+    function startAutoScroll() {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(() => {
+            if (!isDragging && exploreSectionInView) {
+                slider.scrollBy({ left: scrollSpeed * scrollDirection, behavior: "smooth" });
+
+                // Reverse direction when close to the edges
+                if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - edgeBuffer) {
+                    scrollDirection = -1;
+                } else if (slider.scrollLeft <= edgeBuffer) {
+                    scrollDirection = 1;
+                }
+            }
+        }, 1700); // Adjust speed of auto-scroll
     }
 
-    // Start the infinite scroll loop
-    setInterval(scrollSlider, 16); // 16ms for smooth scrolling at ~60fps
+    function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        setTimeout(startAutoScroll, 2500); // Restart auto-scroll after 3 seconds of inactivity
+    }
+
+    // Start auto-scroll initially
+    startAutoScroll();
+
+    // Detect when the explore section is in view
+    const exploreSection = document.querySelector("#explore"); // Assuming your explore page has the ID 'explore'
+    let exploreSectionInView = true;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.target === exploreSection) {
+                    if (entry.isIntersecting) {
+                        exploreSectionInView = true; // Explore section is in view
+                    } else {
+                        exploreSectionInView = false; // Explore section is out of view
+                    }
+                }
+            });
+        },
+        { threshold: 0.5 } // Trigger when at least 50% of the section is visible
+    );
+
+    observer.observe(exploreSection);
 });
+
+
+
 
