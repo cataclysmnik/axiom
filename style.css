@@ -305,7 +305,7 @@ height: 100svh;
     }
 
     .card {
-        min-width: 250px;
+        min-width: 200px;
         height: 100%;
         background-size: cover;
         scroll-snap-align: start;
